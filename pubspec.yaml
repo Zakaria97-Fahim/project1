@@ -18,11 +18,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: Quicksand
+    - family: Quicksand-Bold
       fonts:
         - asset: assets/fonts/Quicksand-Bold.ttf
+    - family: Quicksand-Light
+      fonts:        
         - asset: assets/fonts/Quicksand-Light.ttf
+    - family: Quicksand-Medium
+      fonts:        
         - asset: assets/fonts/Quicksand-Medium.ttf
+    - family: Quicksand
+      fonts:        
         - asset: assets/fonts/Quicksand-Regular.ttf
+    - family: Quicksand-SemiBold
+      fonts:        
         - asset: assets/fonts/Quicksand-SemiBold.ttf
+    - family: Quicksand-VariableFont_wght
+      fonts:        
         - asset: assets/fonts/Quicksand-VariableFont_wght.ttf
