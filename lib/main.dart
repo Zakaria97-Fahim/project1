@@ -1,42 +1,44 @@
-import 'package:flutter/material.dart';
-import 'themes/theme.dart'; // Import your theme file
+import 'package:flutter/material.dart'; 
+import 'themes/theme.dart'; 
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp()); 
 }
 
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState(); 
 }
 
 class _MyAppState extends State<MyApp> {
-  // Variable to track if dark mode is enabled
-  bool isDarkMode = false;
+  
+  bool isDarkMode = false; // Boolean variable to toggle between dark and light themes
 
-  // Function to toggle theme mode
+  // Function to toggle the theme mode
   void toggleTheme() {
     setState(() {
-      isDarkMode = !isDarkMode;
+      isDarkMode = !isDarkMode; // Switch between light and dark mode
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Theme Test App',
-      theme: AppThemes.lightTheme, // Light theme
-      darkTheme: AppThemes.darkTheme, // Dark theme
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light, // Dynamic theme mode
-      home: HomeScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode),
+      title: 'Theme Test App', // App's title
+      theme: AppThemes.lightTheme, // Light theme from custom themes file
+      darkTheme: AppThemes.darkTheme, // Dark theme from custom themes file
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light, // Setting theme mode based on `isDarkMode`
+      home: HomeScreen(toggleTheme: toggleTheme, isDarkMode: isDarkMode), // Setting the home screen of the app
     );
   }
 }
 
+// Stateless widget for the home screen
 class HomeScreen extends StatelessWidget {
-  final VoidCallback toggleTheme;
-  final bool isDarkMode;
+  final VoidCallback toggleTheme; // Callback function to toggle theme
+  final bool isDarkMode; // Boolean to check if dark mode is active
 
+  // Constructor to initialize toggleTheme and isDarkMode
   const HomeScreen({
     Key? key,
     required this.toggleTheme,
@@ -45,56 +47,62 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( // Scaffold provides the structure for the screen
       appBar: AppBar(
-        title: Text(
+        title: const Text( // Title for the app bar
           'Theme Test App',
           style: TextStyle(
-            fontFamily: 'Quicksand', // Use Quicksand font for title
+            fontFamily: 'Quicksand', // Custom font for the title text
           ),
         ),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, // Centering the column
           children: <Widget>[
+            // Large title text
             Text(
               'This is a title',
-              style: Theme.of(context).textTheme.displayLarge,
+              style: Theme.of(context).textTheme.displayLarge, // Using theme style for large text
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20), // Adding space between widgets
+            // Body text
             Text(
               'This is body text',
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyLarge, // Using theme style for body text
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20), 
+            // Bold body text
             Text(
               'This is bold body text',
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium, // Using theme style for medium text
             ),
             SizedBox(height: 20),
+            // Elevated button to toggle the theme
             ElevatedButton(
-              onPressed: toggleTheme, // Toggle the theme
+              onPressed: toggleTheme, // Calls the theme toggle function
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Set button background to red
+                backgroundColor: Colors.red, // Button's background color
               ),
               child: Text(
-                'Toggle Theme',
-                style: Theme.of(context).textTheme.labelLarge,
+                'Toggle Theme', // Button's label
+                style: Theme.of(context).textTheme.labelLarge, // Using theme style for label text
               ),
             ),
             SizedBox(height: 20),
+            // Example of hint text
             Text(
               'Hint text example',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodySmall, // Using theme style for small text
             ),
           ],
         ),
       ),
+      // Floating action button to toggle theme mode
       floatingActionButton: FloatingActionButton(
-        onPressed: toggleTheme, // Toggle theme on floating button press
-        tooltip: 'Toggle Theme',
-        child: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
+        onPressed: toggleTheme, // Toggles theme on button press
+        tooltip: 'Toggle Theme', // Tooltip text for the button
+        child: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode), // Changes icon based on the current theme
       ),
     );
   }

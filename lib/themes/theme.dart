@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Define Macdonaldz Theme colors
 class AppThemes {
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
